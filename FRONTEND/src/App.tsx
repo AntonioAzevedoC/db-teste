@@ -1,49 +1,38 @@
-import { useEffect, useState } from "react";
+// Main application
+
+// Main imports
+import { createBrowserRouter, RouterProvider } from "react-router";
+// import { BrowserRouter, Routes, Route } from "react-router";
+
+// Pages
 import LoginForm from "./components/loginForm";
+import ListUsers from "./components/listUsers";
 import "./App.css";
 
-interface userData {
-  id_usuario: number;
-  nome_usuario: string;
-  email_usuario: string;
-  senha_usuario: string;
-}
+// Setting up react router
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <ListUsers />,
+  },
+  {
+    path: "/add",
+    element: <LoginForm />,
+  },
+]);
 
 // App page
 function App() {
-  const [userData, setUserData] = useState([]);
-  useEffect(() => {
-    fetch("http://localhost:8081/users")
-      .then((res) => res.json())
-      .then((data) => setUserData(data))
-      .catch((err) => console.error(err));
-  }, []);
-
   return (
-    <div className="__user--table">
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Nome</th>
-            <th>Email</th>
-            <th>Senha</th>
-          </tr>
-        </thead>
-        <tbody>
-          {userData.map((data: userData, i: number) => (
-            <tr key={i}>
-              <td>{data.id_usuario}</td>
-              <td>{data.nome_usuario}</td>
-              <td>{data.email_usuario}</td>
-              <td>{data.senha_usuario}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-      <LoginForm />
-    </div>
+    <>
+      <RouterProvider router={router} />
+    </>
   );
+  //   // <BrowserRouter>
+  //   //   <Routes>
+  //   //     <Route path="/" element={<ListUsers />} />
+  //   //   </Routes>
+  //   // </BrowserRouter>
 }
 
 export default App;

@@ -3,7 +3,7 @@ import { useState } from "react";
 
 import Axios from "axios";
 
-function LoginForm() {
+const LoginForm = () => {
   const [username, setUsername] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -79,6 +79,6 @@ function LoginForm() {
       </button>
     </form>
   );
-}
+};
 
 export default LoginForm;
