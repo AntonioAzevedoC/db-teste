@@ -1,27 +1,37 @@
 import { useEffect, useState } from "react";
+import LoginForm from "./components/loginForm";
 import "./App.css";
 
+interface userData {
+  id_usuario: number;
+  nome_usuario: string;
+  email_usuario: string;
+  senha_usuario: string;
+}
+
+// App page
 function App() {
   const [userData, setUserData] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:8081/usuarios")
+    fetch("http://localhost:8081/users")
       .then((res) => res.json())
       .then((data) => setUserData(data))
-      .then((data) => console.log(data))
       .catch((err) => console.error(err));
   }, []);
 
   return (
-    <div className="__userTable">
+    <div className="__user--table">
       <table>
         <thead>
-          <th>ID</th>
-          <th>Nome</th>
-          <th>Email</th>
-          <th>Senha</th>
+          <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Senha</th>
+          </tr>
         </thead>
         <tbody>
-          {userData.map((data, i) => (
+          {userData.map((data: userData, i: number) => (
             <tr key={i}>
               <td>{data.id_usuario}</td>
               <td>{data.nome_usuario}</td>
@@ -31,6 +41,7 @@ function App() {
           ))}
         </tbody>
       </table>
+      <LoginForm />
     </div>
   );
 }
