@@ -4,42 +4,17 @@ import { useState } from "react";
 import Axios from "axios";
 
 const LoginForm = () => {
-  const [username, setUsername] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
-  const addUser = () => {
-    Axios.post("http://localhost:8081/insertUser", {
-      name: username,
-      email: email,
-      password: password,
-    })
-      .then((res) => {
-        console.log(res.data);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+  const login = () => {
+    return;
   };
 
   return (
     // Login form
     <form method="post">
-      <h2>Create account</h2>
-
-      {/* Name input */}
-      <label htmlFor="name">Full name</label>
-      <input
-        id="name"
-        name="name"
-        type="text"
-        required
-        maxLength={100}
-        placeholder=""
-        onChange={(e) => {
-          setUsername(e.target.value);
-        }}
-      />
+      <h2>Login Form</h2>
 
       {/* Email input */}
       <label htmlFor="email">Email</label>
@@ -72,10 +47,10 @@ const LoginForm = () => {
       <button
         onClick={(e) => {
           e.preventDefault();
-          addUser();
+          login();
         }}
       >
-        Create account
+        Login
       </button>
     </form>
   );

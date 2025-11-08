@@ -11,7 +11,7 @@ interface userData {
 const ListUsers = () => {
   const [userData, setUserData] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:8081/users")
+    fetch("http://localhost:4000/users")
       .then((res) => res.json())
       .then((data) => setUserData(data))
       .catch((err) => console.error(err));

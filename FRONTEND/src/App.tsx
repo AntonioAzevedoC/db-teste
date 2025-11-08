@@ -5,19 +5,24 @@ import { createBrowserRouter, RouterProvider } from "react-router";
 // import { BrowserRouter, Routes, Route } from "react-router";
 
 // Pages
-import LoginForm from "./components/loginForm";
+import CreateAccount from "./components/createAccountForm";
 import ListUsers from "./components/listUsers";
+import LoginForm from "./components/loginForm";
 import "./App.css";
 
 // Setting up react router
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <ListUsers />,
+    element: <LoginForm />,
   },
   {
     path: "/add",
-    element: <LoginForm />,
+    element: <CreateAccount />,
+  },
+  {
+    path: "/list",
+    element: <ListUsers />,
   },
 ]);
 

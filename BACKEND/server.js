@@ -5,13 +5,14 @@ const mysql = require("mysql");
 const cors = require("cors");
 
 const app = express();
-app.use(cors());
+app.use(cors({ origin: "http://localhost:5173" }));
+// { origin: "http://localhost:5173" }
 app.use(express.json());
 
 dbProperties = {
   user: "root",
   host: "localhost",
-  password: "",
+  password: "password",
   database: "db_teste",
 };
 
@@ -36,18 +37,18 @@ app.post("/insertUser", (req, res) => {
   // Defining values to be inserted
   const name = req.body.name;
   const email = req.body.email;
-  const password = req.body.password;
+  const passwd = req.body.passwd;
 
   // Query
-  const query = `INSERT INTO usuarios (nome_usuario, email_usuario, senha_usuario) VALUES (?,?,?)`;
+  const query = `INSERT INTO usuarios (nome_usuario, email_usuario, cargo_usuario, setor_usuario, senha_usuario, acesso_usuario) VALUES (?,?,0,0,?,0)`;
 
-  db.query(query, [name, email, password], (err, result) => {
+  db.query(query, [name, email, passwd], (err, result) => {
     if (err) return res.status.send("Database error");
     res.send("Values Sent");
   });
 });
 
 // Checking port connection
-app.listen(8081, () => {
+app.listen(4000, () => {
   console.log("Listening");
 });
