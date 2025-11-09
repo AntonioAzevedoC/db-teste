@@ -1,8 +1,6 @@
 // Document for form login
 import { useState } from "react";
 
-import Axios from "axios";
-
 const LoginForm = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");

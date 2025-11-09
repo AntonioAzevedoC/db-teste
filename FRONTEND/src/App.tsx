@@ -2,7 +2,6 @@
 
 // Main imports
 import { createBrowserRouter, RouterProvider } from "react-router";
-// import { BrowserRouter, Routes, Route } from "react-router";
 
 // Pages
 import CreateAccount from "./components/createAccountForm";
@@ -33,11 +32,14 @@ function App() {
       <RouterProvider router={router} />
     </>
   );
-  //   // <BrowserRouter>
-  //   //   <Routes>
-  //   //     <Route path="/" element={<ListUsers />} />
-  //   //   </Routes>
-  //   // </BrowserRouter>
 }
 
 export default App;
+
+// import { BrowserRouter, Routes, Route } from "react-router";
+
+//   // <BrowserRouter>
+//   //   <Routes>
+//   //     <Route path="/" element={<ListUsers />} />
+//   //   </Routes>
+//   // </BrowserRouter>

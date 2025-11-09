@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 
+import { axiosURL } from "./global/axios";
+
 interface userData {
   id_usuario: number;
   nome_usuario: string;
@@ -11,7 +13,7 @@ interface userData {
 const ListUsers = () => {
   const [userData, setUserData] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:4000/users")
+    fetch(`${axiosURL}/users`)
       .then((res) => res.json())
       .then((data) => setUserData(data))
       .catch((err) => console.error(err));
